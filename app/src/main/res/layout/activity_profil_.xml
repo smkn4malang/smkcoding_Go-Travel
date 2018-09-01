@@ -8,20 +8,29 @@
     android:layout_height="match_parent"
     tools:context=".Profil_Activity">
 
+
     <LinearLayout
         android:orientation="vertical"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="280dp"
         android:background="@drawable/bg1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+            <ImageView
+                android:layout_marginRight="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/edit"
+                />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="196dp"
+            android:layout_width="200dp"
             android:layout_height="180dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/pr" />
     </LinearLayout>
@@ -30,31 +39,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="350dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginLeft="30dp"
-            android:ems="10"
-            android:layout_marginTop="50dp"
-            android:inputType="textPersonName"
-            android:text="BOSS"
-            />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="350dp"
+            <TextView
+                android:id="@+id/editText1"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
+                android:text="BOSS"
+                android:textSize="25dp"
+                android:textColor="#000" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:ems="10"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:inputType="textPersonName"
-            android:text="+6283119xxx" />
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp">
+            <TextView
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:layout_gravity="center"
+                android:text="+6283119xxx" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout

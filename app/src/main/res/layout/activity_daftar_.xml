@@ -56,23 +56,31 @@
         android:text="DAFTAR"
         android:background="@drawable/kotak"/>
 
-    <RadioButton
-        android:id="@+id/radioButton"
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_alignTop="@+id/radioButton2"
-        android:text="Pria"
-        android:textColor="#000" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/imageView"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="161dp"
-        android:text="Wanita"
-        android:textColor="#000" />
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/pria"
+            android:layout_marginLeft="120dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pria"
+            android:textColor="#000" />
+
+        <RadioButton
+            android:id="@+id/wanita"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/imageView"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="161dp"
+            android:text="Wanita"
+            android:textColor="#000" />
+    </RadioGroup>
 
 </RelativeLayout>

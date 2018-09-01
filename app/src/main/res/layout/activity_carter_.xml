@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Carter_Activity">
+
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:id="@+id/gambar"
+        android:src="@drawable/carter"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="70dp">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilih kota"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner1"
+            android:padding="10dp">
+        </Spinner>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Durasi"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:layout_marginLeft="90dp"/>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner2"
+                android:layout_marginLeft="35dp"
+                android:padding="10dp">
+            </Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <Button
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dd/mm/yy"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="45dp"
+                />
+            <TextView
+                android:id="@+id/tampil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Tanggal Pesanan"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="30dp"
+                />
+
+        </LinearLayout>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="CARI"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+</LinearLayout>

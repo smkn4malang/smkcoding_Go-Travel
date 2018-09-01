@@ -15,14 +15,14 @@ public class Saldo_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saldo_);
-        Button button1 = (Button) findViewById(R.id.button);
-        Button button2 = (Button) findViewById(R.id.button1);
+        Button button1 = (Button) findViewById(R.id.button1);
+        Button button2 = (Button) findViewById(R.id.button2);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Saldo_Activity.this, Driver_Activity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(Saldo_Activity.this, Driver_Activity.class);
+                startActivity(intent1);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
