@@ -50,14 +50,14 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="145dp"
         android:text="LOGIN"
-        android:textColor="#ffff"
-        android:background="@drawable/kotak"/>
+        android:textColor="#4682B4"
+        android:background="@drawable/border"/>
 
     <TextView
         android:id="@+id/textView2"

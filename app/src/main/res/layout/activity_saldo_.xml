@@ -73,7 +73,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:background="@drawable/kotak"
-        android:text="INDOMART"
+        android:text="INDOMARET"
         android:layout_gravity="center"
         android:textColor="#fff"/>
 </LinearLayout>
