@@ -51,6 +51,16 @@ public class Drop_Activity extends AppCompatActivity {
     }
 
 
+    /*
+
+    Config config = new Config(this);
+
+    config.setTujuan(kota);
+    config.getTujuan();
+
+    tvJemput.setText(config.getTujuan());
+     */
+
     private void showDateDialog(){
 
         Calendar newCalendar = Calendar.getInstance();
