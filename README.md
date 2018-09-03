@@ -1,6 +1,6 @@
 # smkcoding_Go-Travel
 
-![Daftar](Screenshoot/Screenshot_2018-09-02-11-50-20-138_com.rizqisatria.go_travel)
+![Daftar](Screenshoot/Screenshot_2018-09-02-11-50-20-138_com.rizqisatria.go_travel.png)
 
 ![Daftar](Screenshoot/Screenshot_2018-09-02-11-49-09-666_com.rizqisatria.go_travel)
 
