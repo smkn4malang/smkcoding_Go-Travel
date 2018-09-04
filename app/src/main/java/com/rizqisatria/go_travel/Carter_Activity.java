@@ -1,6 +1,7 @@
 package com.rizqisatria.go_travel;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class Carter_Activity extends AppCompatActivity {
     private SimpleDateFormat dateFormatter;
     private TextView tvDateResult;
     private Button btDatePicker;
+    private Button btcari;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,14 @@ public class Carter_Activity extends AppCompatActivity {
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
+        btcari = (Button) findViewById(R.id.cari);
+        btcari.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Carter_Activity.this, TampilCarter_Activity.class);
+                startActivity(intent);
+            }
+        });
         tvDateResult = (TextView) findViewById(R.id.tampil);
         btDatePicker = (Button) findViewById(R.id.date);
         btDatePicker.setOnClickListener(new View.OnClickListener() {

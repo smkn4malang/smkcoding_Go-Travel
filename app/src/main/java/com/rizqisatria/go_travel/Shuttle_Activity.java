@@ -23,6 +23,7 @@ public class Shuttle_Activity extends AppCompatActivity {
     private SimpleDateFormat dateFormatter;
     private TextView tvDateResult;
     private Button btDatePicker;
+    private Button btPesan;
 
 
     @Override
@@ -42,6 +43,14 @@ public class Shuttle_Activity extends AppCompatActivity {
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
+        btPesan = (Button) findViewById(R.id.pesan1);
+        btPesan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Shuttle_Activity.this, TampilShuttle_Activity.class);
+                startActivity(intent);
+            }
+        });
         tvDateResult = (TextView) findViewById(R.id.tampil);
         btDatePicker = (Button) findViewById(R.id.date);
         btDatePicker.setOnClickListener(new View.OnClickListener() {

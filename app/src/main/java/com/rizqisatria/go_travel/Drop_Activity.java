@@ -1,6 +1,7 @@
 package com.rizqisatria.go_travel;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class Drop_Activity extends AppCompatActivity {
     private SimpleDateFormat dateFormatter;
     private TextView tvDateResult;
     private Button btDatePicker;
+    private Button btnPesan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +39,23 @@ public class Drop_Activity extends AppCompatActivity {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries1);
         spinner1.setAdapter(adapter1);
 
-
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
+        btnPesan = (Button) findViewById(R.id.pesan1);
         tvDateResult = (TextView) findViewById(R.id.tampil);
         btDatePicker = (Button) findViewById(R.id.date);
         btDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDateDialog();
+            }
+        });
+
+        btnPesan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Drop_Activity.this, TampilDrop_Activity.class);
+                startActivity(intent);
             }
         });
     }

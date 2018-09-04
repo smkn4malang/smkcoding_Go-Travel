@@ -27,19 +27,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
+            <EditText
                 android:id="@+id/editText1"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:backgroundTint="#0288d1"
-                android:layout_marginLeft="30dp"
                 android:layout_marginTop="50dp"
                 android:hint="BOSS"
+                android:layout_marginLeft="30dp"
                 android:textSize="25dp"
                 android:textColor="#000" />
         </LinearLayout>
@@ -63,12 +63,13 @@
 
     </LinearLayout>
     <Button
+        android:id="@+id/save"
         android:layout_marginTop="60dp"
         android:layout_width="320dp"
         android:layout_gravity="center"
         android:text="SAVE"
-        android:textColor="#fff"
-        android:background="#0288d1"
+        android:textColor="#4682B4"
+        android:background="@drawable/border"
         android:layout_height="wrap_content" />
 
 
