@@ -27,7 +27,8 @@
         <activity android:name=".Drop_Activity" />
         <activity android:name=".Carter_Activity" />
         <activity android:name=".TampilDrop_Activity" />
-        <activity android:name=".EditProfil_Activity"></activity>
+        <activity android:name=".EditProfil_Activity" />
+        <activity android:name=".TampilShuttle_Activity"></activity>
     </application>
 
 </manifest>

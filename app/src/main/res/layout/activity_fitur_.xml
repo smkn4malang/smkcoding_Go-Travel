@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Fitur_Activity">>
-
+    tools:context=".Fitur_Activity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:elevation="6dp"
         android:orientation="horizontal">
      <LinearLayout
         android:layout_width="wrap_content"
@@ -43,7 +41,8 @@
         <ImageView
             android:padding="10dp"
             android:id="@+id/drop"
-            android:layout_marginLeft="50dp"
+            android:elevation="8dp"
+            android:layout_marginStart="50dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:srcCompat="@drawable/drop" />
@@ -62,9 +61,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <ImageView
-                android:layout_marginLeft="113dp"
+                android:layout_marginStart="110dp"
                 android:id="@+id/shuttle"
                 android:padding="10dp"
+                android:elevation="8dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 app:srcCompat="@drawable/shuttle" />
@@ -76,7 +76,7 @@
                 android:textSize="18dp"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginLeft="55dp"/>
+                android:layout_marginStart="55dp"/>
 
         </LinearLayout>
 
@@ -87,10 +87,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:orientation="horizontal"
-        android:elevation="6dp">
+        android:orientation="horizontal">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,15 +95,16 @@
             <ImageView
                 android:id="@+id/carter"
                 android:padding="10dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:elevation="8dp"
                 android:src="@drawable/carter" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Carter"
-                android:layout_marginLeft="75dp"
+                android:layout_marginStart="75dp"
                 android:textColor="#000"
                 android:textSize="18dp"
                 />
@@ -119,10 +117,11 @@
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/saldo"
-                android:layout_marginLeft="112dp"
+                android:layout_marginStart="110dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:padding="15dp"
+                android:elevation="8dp"
                 app:srcCompat="@drawable/saldo" />
             <TextView
                 android:layout_width="wrap_content"
@@ -132,7 +131,7 @@
                 android:textColor="#000"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginLeft="52dp"/>
+                android:layout_marginStart="52dp"/>
         </LinearLayout>
 
 
@@ -146,7 +145,7 @@
         android:layout_height="match_parent">
 
     <ImageView
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

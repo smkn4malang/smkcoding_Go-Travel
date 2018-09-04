@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TampilDrop_Activity">
-
+    tools:context=".TampilShuttle_Activity">
 
     <ImageView
         android:layout_gravity="center"
@@ -14,7 +13,7 @@
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:id="@+id/gambar"
-        android:src="@drawable/drop"/>
+        android:src="@drawable/shuttle"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +24,7 @@
             android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tujuan kota :"
+            android:text="Jemput kota :"
             android:padding="10dp"
             android:textColor="#000"
             android:textSize="20dp"
@@ -42,11 +41,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" Jemput kota :"
+            android:text=" Tujuan kota :"
             android:padding="10dp"
             android:textColor="#000"
             android:textSize="20dp"
-            android:layout_marginEnd="90dp"
+            android:layout_marginRight="90dp"
             android:gravity="center"
             android:layout_gravity="center" />
 
@@ -61,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pesanan :"
-            android:layout_marginEnd="120dp"
+            android:layout_marginRight="120dp"
             android:gravity="center"
             android:textColor="#000"
             android:textSize="20dp"
