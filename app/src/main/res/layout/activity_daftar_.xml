@@ -18,35 +18,55 @@
         app:srcCompat="@drawable/logo" />
 
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="215dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="263dp"
-        android:ems="10"
-        android:hint="Name/ID"
-        android:backgroundTint="#4682B4"
-        android:inputType="textPersonName"
-        android:textColor="#000"
-        android:textColorHint="#285296"
-        android:textSize="18sp" />
+        android:orientation="horizontal"
+        android:layout_marginTop="265dp">
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="215dp"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/id"
+            android:layout_marginLeft="80dp"/>
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:hint="Name/ID"
+            android:layout_marginLeft="5dp"
+            android:backgroundTint="#4682B4"
+            android:inputType="textPersonName"
+            android:textColor="#000"
+            android:textColorHint="#285296"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="253dp"
-        android:ems="10"
-        android:hint="+62"
-        android:backgroundTint="#4682B4"
-        android:inputType="textPassword"
-        android:textColor="#000"
-        android:textColorHint="#285296" />
+        android:orientation="horizontal"
+        android:layout_marginTop="370dp">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/hp"
+            android:layout_marginLeft="80dp"/>
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:hint="Name/ID"
+            android:layout_marginLeft="5dp"
+            android:backgroundTint="#4682B4"
+            android:inputType="textPersonName"
+            android:textColor="#000"
+            android:textColorHint="#285296"
+            android:textSize="18sp" />
+
+    </LinearLayout>
     <Button
         android:id="@+id/button"
         android:layout_width="210dp"

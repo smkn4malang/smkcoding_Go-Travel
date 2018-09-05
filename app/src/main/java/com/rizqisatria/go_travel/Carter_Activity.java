@@ -46,7 +46,7 @@ public class Carter_Activity extends AppCompatActivity {
         btcari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Carter_Activity.this, TampilCarter_Activity.class);
+                Intent intent = new Intent(Carter_Activity.this, Cari_Activity.class);
                 startActivity(intent);
             }
         });
