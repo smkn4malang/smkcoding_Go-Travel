@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/bg1" />
+            android:background="@drawable/interior" />
 
         <ImageView
             android:layout_width="120dp"
@@ -340,7 +340,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/pesan"
+        android:id="@+id/mesen"
         android:layout_width="200dp"
         android:layout_marginTop="5dp"
         android:layout_height="wrap_content"

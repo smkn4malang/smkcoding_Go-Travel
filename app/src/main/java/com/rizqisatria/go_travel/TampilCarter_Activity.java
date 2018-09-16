@@ -1,42 +1,42 @@
 package com.rizqisatria.go_travel;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TampilCarter_Activity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    List<SimpleCarter> data = new ArrayList<>();
-    @BindView(R.id.recycler)
-    RecyclerView recyclerView;
+public class TampilCarter_Activity extends AppCompatActivity {
+    Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_carter_);
+        setContentView(R.layout.activity_tampil_carter_);
 
-        ButterKnife.bind (this);
-
-        dataTetep();
-
-        RecyclerAdapter adapter = new RecyclerAdapter(this, data);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-    }
-
-    void dataTetep(){
-        for(int i = 0; i < 10; i++){
-            SimpleCarter model = new SimpleCarter();
-            model.setNama("Nama yang ke "+(i+1));
-            model.setKelas("Kelas yang ke"+(i+1));
-            data.add(model);
-        }
+        logout = (Button) findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TampilCarter_Activity.this, GOTravel_Activity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
+
+

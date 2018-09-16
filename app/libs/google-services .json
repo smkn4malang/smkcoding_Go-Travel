@@ -1,0 +1,45 @@
+{
+  "project_info": {
+    "project_number": "272905606577",
+    "firebase_url": "https://go-travel-119de.firebaseio.com",
+    "project_id": "go-travel-119de",
+    "storage_bucket": "go-travel-119de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272905606577:android:0060cb4ef0e14936",
+        "android_client_info": {
+          "package_name": "edu.dycode.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272905606577-uvepe7dicqg8cnlq4ssiidmbke7fm36k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuzAA6xNxioM2_PRKWwzv1anhH_ruoN5Q"
+        },
+        {
+          "current_key": "AIzaSyDuzAA6xNxioM2_PRKWwzv1anhH_ruoN5Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
