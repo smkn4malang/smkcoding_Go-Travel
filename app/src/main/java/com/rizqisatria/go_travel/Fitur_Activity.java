@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
+
 public class Fitur_Activity extends AppCompatActivity {
 
     ImageView imgsaldo;
@@ -13,10 +16,19 @@ public class Fitur_Activity extends AppCompatActivity {
     ImageView imgdrop;
     ImageView imgcarter;
     ImageView profil;
+
+    CarouselView carouselView;
+    int[] sampleImages = {R.drawable.kota1, R.drawable.kota2};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fitur_);
+
+        carouselView = (CarouselView) findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
+        carouselView.setImageListener(imageListener);
+
 
         imgshuttle = (ImageView) findViewById(R.id.shuttle);
         imgdrop = (ImageView) findViewById(R.id.drop);
@@ -62,5 +74,11 @@ public class Fitur_Activity extends AppCompatActivity {
             }
         });
     }
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
 
 }
