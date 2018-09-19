@@ -36,14 +36,7 @@ public class GOTravel_Activity extends AppCompatActivity {
         nama = (EditText) findViewById(R.id.nama);
         nomor = (EditText) findViewById(R.id.nomor);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-
-        auth = FirebaseAuth.getInstance();
-
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(GOTravel_Activity.this, Fitur_Activity.class));
-            finish();
-        }
+        btnlogin = (Button) findViewById(R.id.button);
         auth = FirebaseAuth.getInstance();
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
@@ -53,24 +46,24 @@ public class GOTravel_Activity extends AppCompatActivity {
                 final String nomer = nomor.getText().toString();
 
                 if (TextUtils.isEmpty(id)){
-                    Toast.makeText(getApplicationContext(), "Enter Id/Nama !",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Masukkan Email !",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(nomer)){
-                    Toast.makeText(getApplicationContext(), "Enter Nomor !",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Masukkan Nomor !",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                auth.signInWithIdAndNomor(id,nomer)
-                        .addOnCompleteListener(GOTravel_Activity.this, new OnCompleteListener<AuthResult>()){
+                auth.signInWithEmailAndPassword(id,nomer)
+                        .addOnCompleteListener(GOTravel_Activity.this, new OnCompleteListener<AuthResult>(){
                     @Override
                             public void onComplete(@NonNull Task<AuthResult> task){
                         progressBar.setVisibility(View.GONE);
                         if (!task.isSuccessful()){
-                            if(nomer.length() < 6) {
-                                Toast.makeText(getApplicationContext(), "Nomer Aneh!", Toast.LENGTH_SHORT).show();
+                            if(nomer.length() < 11) {
+                                Toast.makeText(getApplicationContext(), "Nomer Anda Kurang!", Toast.LENGTH_SHORT).show();
                             }
                             else{
                                 Toast.makeText(getApplicationContext(), "Gagal Login!", Toast.LENGTH_SHORT).show();
@@ -81,7 +74,7 @@ public class GOTravel_Activity extends AppCompatActivity {
                             finish();
                         }
                     }
-                }
+                });
 
             }
         });

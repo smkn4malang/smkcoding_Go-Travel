@@ -1,15 +1,22 @@
 package com.rizqisatria.go_travel;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Profil_Activity extends AppCompatActivity {
 
     ImageView edit;
     ImageView balik;
+    Button logout;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +25,8 @@ public class Profil_Activity extends AppCompatActivity {
 
         edit = (ImageView) findViewById(R.id.edit);
         balik = (ImageView) findViewById(R.id.balik);
+        logout = (Button) findViewById(R.id.logout);
+        auth = FirebaseAuth.getInstance();
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,5 +42,22 @@ public class Profil_Activity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+        auth.signOut();
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
+                    @Override
+                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                        if (user == null) {
+                            startActivity(new Intent(Profil_Activity.this, GOTravel_Activity.class));
+                            finish();
+                        }
+                    }
+                };
+            }
+        });
+
     }
 }

@@ -86,7 +86,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/imageView"
@@ -105,5 +106,14 @@
             android:layout_height="wrap_content"
             android:text="Rp.999.000.xxx"/>
     </LinearLayout>
+    <Button
+        android:id="@+id/logout"
+        android:layout_marginTop="30dp"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        android:layout_gravity="center"
+        android:textColor="#4682B4"
+        android:background="@drawable/border"/>
 
 </LinearLayout>

@@ -1,37 +1,87 @@
 package com.rizqisatria.go_travel;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Daftar_Activity extends AppCompatActivity {
 
-    Button btndaftar;
-    RadioButton radioButton, radioButton1;
+    private Button btndaftar;
+    private RadioButton radioButton, radioButton1;
+    private EditText Inptemail, nomer;
+    private ProgressBar progressBar;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_);
-        Button button = (Button) findViewById(R.id.button);
+
+        Inptemail = (EditText) findViewById(R.id.email);
+        nomer = (EditText) findViewById(R.id.nomer);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        btndaftar = (Button) findViewById(R.id.button);
         radioButton = (RadioButton) findViewById(R.id.pria);
         radioButton1 = (RadioButton) findViewById(R.id.wanita);
+        auth = FirebaseAuth.getInstance();
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btndaftar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent (Daftar_Activity.this, GOTravel_Activity.class);
-                if(radioButton.isChecked()){
-                    intent.putExtra("Jk", radioButton.getText().toString());
+            public void onClick(View v) {
+
+                String email = Inptemail.getText().toString().trim();
+                String password = nomer.getText().toString().trim();
+
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplicationContext(), "Masukkan Email Anda", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                if(radioButton1.isChecked()){
-                    intent.putExtra("Jk", radioButton1.getText().toString());
+
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                startActivity(intent);
+
+                if (password.length() < 11) {
+                    Toast.makeText(getApplicationContext(), "Nomer Anda Kurang, Minim 11 angka", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+                auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(Daftar_Activity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressBar.setVisibility(View.GONE);
+                                if (!task.isSuccessful()) {
+                                    Toast.makeText(Daftar_Activity.this, "Authentication failed." + task.getException(),
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+                                    startActivity(new Intent(Daftar_Activity.this, GOTravel_Activity.class));
+                                    finish();
+                                }
+                            }
+                        });
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        progressBar.setVisibility(View.GONE);
     }
 }

@@ -29,11 +29,12 @@
             android:layout_height="50dp"
             android:src="@drawable/id"
             android:layout_marginLeft="80dp"/>
+
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/email"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
-            android:hint="Name/ID"
+            android:hint="Email"
             android:layout_marginLeft="5dp"
             android:backgroundTint="#4682B4"
             android:inputType="textPersonName"
@@ -56,13 +57,13 @@
             android:src="@drawable/hp" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/nomer"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:backgroundTint="#4682B4"
             android:hint="+62"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:textColor="#000"
             android:textColorHint="#285296"
             android:textSize="18sp" />
@@ -82,8 +83,7 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="480dp"
         android:orientation="horizontal">
 
         <RadioButton
@@ -105,5 +105,13 @@
             android:text="Wanita"
             android:textColor="#000" />
     </RadioGroup>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginLeft="190dp"
+        android:visibility="gone"
+        />
 
 </RelativeLayout>
