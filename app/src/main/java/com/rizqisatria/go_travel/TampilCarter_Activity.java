@@ -44,7 +44,7 @@ public class TampilCarter_Activity extends AppCompatActivity {
     }
     @SuppressLint("NewApi")
     public void pesan(View view) {
-        String formattedNumber = "+62 8223 6118 471";
+        String formattedNumber = "6287859706611";
         try {
             Intent sendIntent = new Intent("android.intent.action.MAIN");
             sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));

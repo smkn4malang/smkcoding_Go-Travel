@@ -2,6 +2,7 @@ package com.rizqisatria.go_travel;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,11 +32,19 @@ public class Shuttle_Activity extends AppCompatActivity {
     private Button btDatePicker;
     private Button btPesan;
 
+    FirebaseDatabase database;
+    DatabaseReference ref;
+    Order order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shuttle_);
+
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Order");
+        order = new Order();
+
 
         spinner = (Spinner) findViewById(R.id.spinner1);
         String [] countries = {"Surabaya", "Malang", "Sidoarjo"};
@@ -60,6 +75,13 @@ public class Shuttle_Activity extends AppCompatActivity {
             }
         });
     }
+    //private void getValues(){
+
+        //order.set(spinner.getPositionForView(spinner));
+        //order.set(spinner1.getPositionForView(spinner1));
+    //}
+
+
     private void showDateDialog(){
 
         Calendar newCalendar = Calendar.getInstance();
@@ -79,6 +101,21 @@ public class Shuttle_Activity extends AppCompatActivity {
 
         datePickerDialog.show();
     }
+
+    public void insert(View view) {
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }
 
 

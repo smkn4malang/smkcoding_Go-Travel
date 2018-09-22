@@ -31,6 +31,12 @@ public class GOTravel_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gotravel_);
+        auth = FirebaseAuth.getInstance();
+
+        if(auth.getCurrentUser() != null){
+            startActivity(new Intent(GOTravel_Activity.this, Fitur_Activity.class));
+            finish();
+        }
 
         TextView text = (TextView) findViewById(R.id.textView2) ;
         nama = (EditText) findViewById(R.id.nama);
@@ -55,6 +61,7 @@ public class GOTravel_Activity extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
+
 
                 auth.signInWithEmailAndPassword(id,nomer)
                         .addOnCompleteListener(GOTravel_Activity.this, new OnCompleteListener<AuthResult>(){
