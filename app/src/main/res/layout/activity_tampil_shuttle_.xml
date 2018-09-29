@@ -60,7 +60,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/jemput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/tujuan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/jumlah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/tanggal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#000"/>
+
 
 
 

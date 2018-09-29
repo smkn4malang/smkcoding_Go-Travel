@@ -24,6 +24,10 @@ public class Carter_Activity extends AppCompatActivity {
     private TextView tvDateResult;
     private Button btDatePicker;
     private Button btcari;
+    private String jemput;
+    private String tujuan;
+    private String jumlah;
+    private String tanggal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,5 +83,15 @@ public class Carter_Activity extends AppCompatActivity {
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
         datePickerDialog.show();
+    }
+    public void senddata(){
+
+        Intent intent = new Intent(Carter_Activity.this, TampilShuttle_Activity.class);
+
+        intent.putExtra("KOTA TUJUAN", tujuan);
+        intent.putExtra("KOTA JEMPUT", jemput);
+        intent.putExtra("JUMLAH PESANAN", jumlah);
+        intent.putExtra("TANGAL PESANAN", tanggal);
+        startActivity(intent);
     }
 }

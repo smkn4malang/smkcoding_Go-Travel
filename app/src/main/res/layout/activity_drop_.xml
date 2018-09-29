@@ -80,6 +80,7 @@
             android:layout_marginLeft="90dp"
             />
         <EditText
+            android:id="@+id/jumlah"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:hint="1"
@@ -125,4 +126,9 @@
         android:layout_gravity="center"
         android:gravity="center"/>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/progress"/>
 </LinearLayout>

@@ -9,9 +9,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,30 +25,44 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 public class Shuttle_Activity extends AppCompatActivity {
 
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     Spinner spinner;
     Spinner spinner1;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
-    private TextView tvDateResult;
+    private TextView tvDateResult, getspinner;
     private Button btDatePicker;
     private Button btPesan;
-
+    private String jemput;
+    private String tujuan;
+    private EditText jumlah;
+    private TextView tanggal;
+    String show, jml;
     FirebaseDatabase database;
     DatabaseReference ref;
     Order order;
+    Intent intent;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shuttle_);
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("pesanan");
+
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Order");
         order = new Order();
 
+        progressBar = (ProgressBar) findViewById(R.id.progress);
+        progressBar.setVisibility(View.GONE);
 
         spinner = (Spinner) findViewById(R.id.spinner1);
         String [] countries = {"Surabaya", "Malang", "Sidoarjo"};
@@ -58,12 +76,31 @@ public class Shuttle_Activity extends AppCompatActivity {
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
+
+        jemput = spinner1.getSelectedItem().toString().trim();
+        tujuan = spinner.getSelectedItem().toString().trim();
+        jumlah = (EditText) findViewById(R.id.jumlah);
+        tanggal = (TextView) findViewById(R.id.tampil);
+
+        jml = jumlah.getText().toString().trim();
+        show = tanggal.getText().toString().trim();
+
+        final pesanan pesan=new pesanan( spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), jumlah.getText().toString(),tanggal.getText().toString());
         btPesan = (Button) findViewById(R.id.pesan1);
         btPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Shuttle_Activity.this, TampilShuttle_Activity.class);
-                startActivity(intent);
+                progressBar.setVisibility(View.VISIBLE);
+                databaseReference.child(Objects.requireNonNull(databaseReference.push().getKey())).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            progressBar.setVisibility(View.GONE);
+                            Intent intent = new Intent(Shuttle_Activity.this, TampilShuttle_Activity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
         tvDateResult = (TextView) findViewById(R.id.tampil);
@@ -75,6 +112,15 @@ public class Shuttle_Activity extends AppCompatActivity {
             }
         });
     }
+//    public void senddata(){
+//
+//            Intent intent = new Intent(Shuttle_Activity.this, TampilShuttle_Activity.class);
+//            intent.putExtra("JEMPUT_KOTA", jemput);
+//            intent.putExtra("TUJUAN_KOTA", tujuan);
+//            intent.putExtra("JUMLAH_PESANAN", jml);
+//            intent.putExtra("TANGAL_PESANAN", show);
+//            startActivity(intent);
+//    }
     //private void getValues(){
 
         //order.set(spinner.getPositionForView(spinner));
@@ -94,13 +140,14 @@ public class Shuttle_Activity extends AppCompatActivity {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
 
-                tvDateResult.setText("Tanggal Pesanan : "+dateFormatter.format(newDate.getTime()));
+                tvDateResult.setText(" "+dateFormatter.format(newDate.getTime()));
             }
 
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
         datePickerDialog.show();
     }
+
 
     public void insert(View view) {
         ref.addValueEventListener(new ValueEventListener() {
