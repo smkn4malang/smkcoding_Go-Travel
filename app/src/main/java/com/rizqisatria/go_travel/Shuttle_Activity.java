@@ -65,12 +65,12 @@ public class Shuttle_Activity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
 
         spinner = (Spinner) findViewById(R.id.spinner1);
-        String [] countries = {"Surabaya", "Malang", "Sidoarjo"};
+        String [] countries = { "Surabaya","Malang", "Sidoarjo"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries);
         spinner.setAdapter(adapter);
 
         spinner1 = (Spinner) findViewById(R.id.spinner2);
-        String [] countries1 = {"Surabaya", "Malang", "Sidoarjo"};
+        String [] countries1 = { "Surabaya","Malang", "Sidoarjo"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries1);
         spinner1.setAdapter(adapter1);
 
@@ -85,18 +85,22 @@ public class Shuttle_Activity extends AppCompatActivity {
         jml = jumlah.getText().toString().trim();
         show = tanggal.getText().toString().trim();
 
-        final pesanan pesan=new pesanan( spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), jumlah.getText().toString(),tanggal.getText().toString());
         btPesan = (Button) findViewById(R.id.pesan1);
         btPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final pesanan pesan=new pesanan( spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), jumlah.getText().toString(),tanggal.getText().toString());
                 progressBar.setVisibility(View.VISIBLE);
-                databaseReference.child(Objects.requireNonNull(databaseReference.push().getKey())).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
+                final String key = Objects.requireNonNull(databaseReference.push().getKey());
+                databaseReference.child(key).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             progressBar.setVisibility(View.GONE);
+                            Bundle extras = new Bundle();
+                            extras.putString("pesanan", key);
                             Intent intent = new Intent(Shuttle_Activity.this, TampilShuttle_Activity.class);
+                            intent.putExtras(extras);
                             startActivity(intent);
                         }
                     }

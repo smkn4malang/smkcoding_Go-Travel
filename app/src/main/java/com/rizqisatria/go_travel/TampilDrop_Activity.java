@@ -70,13 +70,10 @@ public class TampilDrop_Activity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         logout = (Button) findViewById(R.id.logout1);
-        logout.setText(getIntent().getStringExtra("jml"));
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 auth.signOut();
-                Intent intent2 = new Intent(TampilDrop_Activity.this, GOTravel_Activity.class);
-                startActivity(intent2);
             }
         });
     }

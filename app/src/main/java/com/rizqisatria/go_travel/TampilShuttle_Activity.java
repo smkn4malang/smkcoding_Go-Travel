@@ -33,17 +33,23 @@ public class TampilShuttle_Activity extends AppCompatActivity {
     private TextView mTujuan;
     private TextView mJumlah;
     private TextView mTanggal;
-    Bundle bundle;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tampil_shuttle_);
 
-        bundle = getIntent().getExtras();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("pesanan");
-        databaseReference.child(databaseReference.push().getKey()).addValueEventListener(new ValueEventListener() {
+
+        mJemput = (TextView) findViewById(R.id.jemput);
+        mJumlah = (TextView) findViewById(R.id.jumlah);
+        mTujuan = (TextView) findViewById(R.id.tujuan);
+        mTanggal = (TextView) findViewById(R.id.tanggal);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("pesanan");
+        //databaseReference.child(databaseReference.push().getKey())
+        databaseReference.child(databaseReference.getKey()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot pesan: dataSnapshot.getChildren()){
@@ -61,13 +67,7 @@ public class TampilShuttle_Activity extends AppCompatActivity {
             }
         });
 
-
-        mJemput = (TextView) findViewById(R.id.jemput);
-        mJumlah = (TextView) findViewById(R.id.jumlah);
-        mTujuan = (TextView) findViewById(R.id.tujuan);
-        mTanggal = (TextView) findViewById(R.id.tanggal);
-
-        pesan3 = (TextView) findViewById(R.id.pesan3) ;
+       pesan3 = (TextView) findViewById(R.id.pesan3) ;
         auth = FirebaseAuth.getInstance();
 
         logout = (Button) findViewById(R.id.logout2);
@@ -75,8 +75,6 @@ public class TampilShuttle_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 auth.signOut();
-                Intent intent2 = new Intent(TampilShuttle_Activity.this, GOTravel_Activity.class);
-                startActivity(intent2);
             }
         });
 

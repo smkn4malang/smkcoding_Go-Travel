@@ -81,10 +81,11 @@ public class Drop_Activity extends AppCompatActivity {
 
         Log.d("jml", jml);
 
-        final pesanan pesan=new pesanan(spinner.getSelectedItem().toString(),spinner1.getSelectedItem().toString(),jumlah.getText().toString(),tanggal.getText().toString());
+
         btnPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final pesanan pesan=new pesanan(spinner.getSelectedItem().toString(),spinner1.getSelectedItem().toString(),jumlah.getText().toString(),tanggal.getText().toString());
                 progressBar.setVisibility(View.VISIBLE);
                 databaseReference.child(databaseReference.push().getKey()).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
