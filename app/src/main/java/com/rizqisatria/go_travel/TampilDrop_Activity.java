@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -42,19 +44,19 @@ public class TampilDrop_Activity extends AppCompatActivity {
         mJumlah = (TextView) findViewById(R.id.jumlah);
         mTujuan = (TextView) findViewById(R.id.tujuan);
         mTanggal = (TextView) findViewById(R.id.tanggal);
+        auth = FirebaseAuth.getInstance();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("pesanan");
-        databaseReference.child(databaseReference.push().getKey()).addValueEventListener(new ValueEventListener() {
+        String key = getIntent().getStringExtra(Drop_Activity.extra);
+        databaseReference.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot pesan: dataSnapshot.getChildren()){
-                    pesanan psn = pesan.getValue(pesanan.class);
+                    pesanan psn = dataSnapshot.getValue(pesanan.class);
                     mJemput.setText(psn.getJemput());
                     mTujuan.setText(psn.getTujuan());
                     mJumlah.setText(psn.getJumlah());
                     mTanggal.setText(psn.getTanggal());
-                }
             }
 
             @Override
@@ -67,13 +69,13 @@ public class TampilDrop_Activity extends AppCompatActivity {
 
         //Shows("","","","");
 
-        auth = FirebaseAuth.getInstance();
-
         logout = (Button) findViewById(R.id.logout1);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 auth.signOut();
+                Intent intent2 = new Intent(TampilDrop_Activity.this, GOTravel_Activity.class);
+                startActivity(intent2);
             }
         });
     }

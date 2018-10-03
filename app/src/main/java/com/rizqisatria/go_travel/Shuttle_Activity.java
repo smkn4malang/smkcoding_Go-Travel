@@ -28,7 +28,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class Shuttle_Activity extends AppCompatActivity {
-
+    public static final String extra = "extra";
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     Spinner spinner;
@@ -91,16 +91,15 @@ public class Shuttle_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 final pesanan pesan=new pesanan( spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), jumlah.getText().toString(),tanggal.getText().toString());
                 progressBar.setVisibility(View.VISIBLE);
-                final String key = Objects.requireNonNull(databaseReference.push().getKey());
+                final String key = databaseReference.push().getKey();
                 databaseReference.child(key).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             progressBar.setVisibility(View.GONE);
-                            Bundle extras = new Bundle();
-                            extras.putString("pesanan", key);
                             Intent intent = new Intent(Shuttle_Activity.this, TampilShuttle_Activity.class);
-                            intent.putExtras(extras);
+                            //intent.putExtra("jml", spinner1.getSelectedItem().toString());
+                            intent.putExtra(extra, key);
                             startActivity(intent);
                         }
                     }

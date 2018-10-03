@@ -81,6 +81,7 @@
         android:background="@drawable/border"/>
 
     <RadioGroup
+        android:id="@+id/jenis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="480dp"
@@ -109,6 +110,7 @@
         android:id="@+id/progressBar"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:indeterminateTint="#4682B4"
         android:layout_marginTop="520dp"
         android:layout_marginLeft="190dp"
         android:visibility="gone"

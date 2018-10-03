@@ -25,7 +25,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class Drop_Activity extends AppCompatActivity {
-
+    public static final String extra = "extra";
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     Spinner spinner;
@@ -87,13 +87,15 @@ public class Drop_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 final pesanan pesan=new pesanan(spinner.getSelectedItem().toString(),spinner1.getSelectedItem().toString(),jumlah.getText().toString(),tanggal.getText().toString());
                 progressBar.setVisibility(View.VISIBLE);
-                databaseReference.child(databaseReference.push().getKey()).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
+                final String key = databaseReference.push().getKey();
+                databaseReference.child(key).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             progressBar.setVisibility(View.GONE);
                             Intent intent = new Intent(Drop_Activity.this, TampilDrop_Activity.class);
-                            intent.putExtra("jml", spinner1.getSelectedItem().toString());
+                            //intent.putExtra("jml", spinner1.getSelectedItem().toString());
+                            intent.putExtra(extra, key);
                             startActivity(intent);
 
                         }

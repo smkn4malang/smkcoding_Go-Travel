@@ -28,7 +28,7 @@ public class TampilShuttle_Activity extends AppCompatActivity {
     DatabaseReference databaseReference;
     Button logout;
     TextView pesan3;
-    FirebaseAuth auth;
+    private FirebaseAuth Auth;
     private TextView mJemput;
     private TextView mTujuan;
     private TextView mJumlah;
@@ -37,6 +37,8 @@ public class TampilShuttle_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tampil_shuttle_);
+
+        Auth = FirebaseAuth.getInstance();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("pesanan");
@@ -48,17 +50,15 @@ public class TampilShuttle_Activity extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("pesanan");
-        //databaseReference.child(databaseReference.push().getKey())
-        databaseReference.child(databaseReference.getKey()).addValueEventListener(new ValueEventListener() {
+        String key = getIntent().getStringExtra(Drop_Activity.extra);
+        databaseReference.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot pesan: dataSnapshot.getChildren()){
-                    pesanan psn = pesan.getValue(pesanan.class);
-                    mJemput.setText(psn.getJemput());
-                    mTujuan.setText(psn.getTujuan());
-                    mJumlah.setText(psn.getJumlah());
-                    mTanggal.setText(psn.getTanggal());
-                }
+                pesanan psn = dataSnapshot.getValue(pesanan.class);
+                mJemput.setText(psn.getJemput());
+                mTujuan.setText(psn.getTujuan());
+                mJumlah.setText(psn.getJumlah());
+                mTanggal.setText(psn.getTanggal());
             }
 
             @Override
@@ -68,13 +68,15 @@ public class TampilShuttle_Activity extends AppCompatActivity {
         });
 
        pesan3 = (TextView) findViewById(R.id.pesan3) ;
-        auth = FirebaseAuth.getInstance();
+
 
         logout = (Button) findViewById(R.id.logout2);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                auth.signOut();
+                Auth.signOut();
+                Intent intent2 = new Intent(TampilShuttle_Activity.this, GOTravel_Activity.class);
+                startActivity(intent2);
             }
         });
 
