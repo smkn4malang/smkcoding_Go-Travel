@@ -74,21 +74,20 @@
             android:id="@+id/textpesan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pilih Pesanan :"
+            android:text="Pilih Pesanan  "
             android:gravity="center"
             android:textColor="#000"
             android:textSize="18dp"
             android:layout_marginLeft="90dp"
             />
-        <EditText
-            android:id="@+id/jumlah"
-            android:layout_width="50dp"
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="1"
-            android:backgroundTint="#4682B4"
-            android:inputType="number"
-            android:gravity="center"
-            android:layout_marginLeft="30dp"/>
+            android:id="@+id/spinner3"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp">
+        </Spinner>
+
     </LinearLayout>
 
     <LinearLayout

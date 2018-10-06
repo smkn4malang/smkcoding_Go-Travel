@@ -77,7 +77,7 @@ public class Carter_Activity extends AppCompatActivity {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
 
-                tvDateResult.setText("Tanggal Pesanan : "+dateFormatter.format(newDate.getTime()));
+                tvDateResult.setText(" "+dateFormatter.format(newDate.getTime()));
             }
 
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));

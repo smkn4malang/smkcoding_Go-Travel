@@ -30,6 +30,7 @@ public class Drop_Activity extends AppCompatActivity {
     DatabaseReference databaseReference;
     Spinner spinner;
     Spinner spinner1;
+    Spinner spinner2;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
     private TextView tvDateResult;
@@ -37,7 +38,7 @@ public class Drop_Activity extends AppCompatActivity {
     private Button btnPesan;
     private EditText jumlah;
     private TextView tanggal;
-    String show, jml,jemput,tujuan;
+    String show,jemput,tujuan;
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +58,18 @@ public class Drop_Activity extends AppCompatActivity {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries1);
         spinner1.setAdapter(adapter1);
 
+        spinner2 = (Spinner) findViewById(R.id.spinner3);
+        String [] countries2 = {"1", "2", "3", "4"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries2);
+        spinner2.setAdapter(adapter2);
+
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setVisibility(View.GONE);
         jemput = spinner1.getSelectedItem().toString();
+        spinner2.getSelectedItem().toString();
         tujuan = spinner.getSelectedItem().toString().trim();
-        jumlah = (EditText) findViewById(R.id.jumlah);
         tanggal = (TextView) findViewById(R.id.tampil);
 
-        jml = jumlah.getText().toString().trim();
         show = tanggal.getText().toString();
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -79,13 +84,11 @@ public class Drop_Activity extends AppCompatActivity {
             }
         });
 
-        Log.d("jml", jml);
-
 
         btnPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final pesanan pesan=new pesanan(spinner.getSelectedItem().toString(),spinner1.getSelectedItem().toString(),jumlah.getText().toString(),tanggal.getText().toString());
+                final pesanan pesan=new pesanan(spinner.getSelectedItem().toString(),spinner1.getSelectedItem().toString(),spinner2.getSelectedItem().toString(),tanggal.getText().toString());
                 progressBar.setVisibility(View.VISIBLE);
                 final String key = databaseReference.push().getKey();
                 databaseReference.child(key).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {

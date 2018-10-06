@@ -31,6 +31,7 @@ public class Shuttle_Activity extends AppCompatActivity {
     public static final String extra = "extra";
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    Spinner spinner2;
     Spinner spinner;
     Spinner spinner1;
     private DatePickerDialog datePickerDialog;
@@ -42,7 +43,7 @@ public class Shuttle_Activity extends AppCompatActivity {
     private String tujuan;
     private EditText jumlah;
     private TextView tanggal;
-    String show, jml;
+    String show;
     FirebaseDatabase database;
     DatabaseReference ref;
     Order order;
@@ -74,22 +75,26 @@ public class Shuttle_Activity extends AppCompatActivity {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries1);
         spinner1.setAdapter(adapter1);
 
+        spinner2 = (Spinner) findViewById(R.id.spinner3);
+        String [] countries2 = {"1", "2", "3", "4"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries2);
+        spinner2.setAdapter(adapter2);
+
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
 
         jemput = spinner1.getSelectedItem().toString().trim();
         tujuan = spinner.getSelectedItem().toString().trim();
-        jumlah = (EditText) findViewById(R.id.jumlah);
+        spinner2.getSelectedItem().toString().trim();
         tanggal = (TextView) findViewById(R.id.tampil);
 
-        jml = jumlah.getText().toString().trim();
         show = tanggal.getText().toString().trim();
 
         btPesan = (Button) findViewById(R.id.pesan1);
         btPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final pesanan pesan=new pesanan( spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), jumlah.getText().toString(),tanggal.getText().toString());
+                final pesanan pesan=new pesanan( spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), spinner2.getSelectedItem().toString(),tanggal.getText().toString());
                 progressBar.setVisibility(View.VISIBLE);
                 final String key = databaseReference.push().getKey();
                 databaseReference.child(key).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
