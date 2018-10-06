@@ -1,12 +1,12 @@
 package com.rizqisatria.go_travel;
 
-public class user {
+public class User {
     private String email,nomer,jenis;
 
 
-    public user(){}
+    public User(){}
 
-    public user(String email, String nomer, String jenis) {
+    public User(String email, String nomer, String jenis) {
         this.email = email;
         this.nomer = nomer;
         this.jenis = jenis;

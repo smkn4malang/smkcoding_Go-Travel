@@ -1,7 +1,6 @@
 package com.rizqisatria.go_travel;
 
 import android.content.Intent;
-import android.print.PrinterId;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -91,7 +90,7 @@ public class Daftar_Activity extends AppCompatActivity {
                                     ValueEventListener valueEventListener = ref.addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            user u =new user(
+                                            User u =new User(
                                                     Inptemail.getText().toString(),
                                                     nomer.getText().toString(),
                                                     result

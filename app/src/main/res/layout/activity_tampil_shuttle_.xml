@@ -67,7 +67,8 @@
                         android:id="@+id/jemput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="Jemput :"
+                        android:gravity="center"
                         android:textSize="20sp"
                         android:textColor="#000"/>
                     <TextView
@@ -75,7 +76,8 @@
                         android:id="@+id/tujuan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="Tujuan :"
+                        android:gravity="center"
                         android:textSize="20sp"
                         android:textColor="#000"/>
                     <TextView
@@ -83,7 +85,9 @@
                         android:id="@+id/jumlah"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="Jumlah :"
+                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:textSize="20sp"
                         android:textColor="#000"/>
                     <TextView
@@ -91,7 +95,8 @@
                         android:id="@+id/tanggal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="Tanggal"
+                        android:gravity="center"
                         android:textSize="20sp"
                         android:textColor="#000"/>
 
