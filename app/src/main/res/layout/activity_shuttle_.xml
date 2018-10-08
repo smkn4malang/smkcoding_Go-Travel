@@ -116,11 +116,38 @@
             />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp"
+            android:layout_marginLeft="110dp"
+            android:textStyle="bold"
+            android:textColor="#DC143C"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/harga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textColor="#DC143C"
+            android:layout_marginLeft="40dp"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
     <Button
         android:layout_width="250dp"
         android:id="@+id/pesan1"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="PESAN"
         android:onClick="insert"
         android:layout_gravity="center"

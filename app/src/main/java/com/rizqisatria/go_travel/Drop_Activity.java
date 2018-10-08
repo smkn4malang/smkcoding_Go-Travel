@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +31,8 @@ public class Drop_Activity extends AppCompatActivity {
     Spinner spinner;
     Spinner spinner1;
     Spinner spinner2;
+    Integer harga = 0;
+    String Tharga;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
     private TextView tvDateResult;
@@ -38,7 +40,8 @@ public class Drop_Activity extends AppCompatActivity {
     private Button btnPesan;
     private EditText jumlah;
     private TextView tanggal;
-    String show,jemput,tujuan;
+    private TextView price;
+    String show,jemput,tujuan, jumlah1;
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +66,43 @@ public class Drop_Activity extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries2);
         spinner2.setAdapter(adapter2);
 
+        price = (TextView) findViewById(R.id.prices);
+
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String plhpesanan = spinner2.getSelectedItem().toString();
+                Integer plh = Integer.parseInt(plhpesanan);
+                String jmpt = spinner.getSelectedItem().toString();
+                switch (jmpt) {
+                    case "Malang":
+                        harga = plh * 10000;
+                        Tharga =String.valueOf(harga);
+                        price.setText(Tharga);
+                        break;
+                    case "Surabaya":
+                        harga = plh * 20000;
+                        Tharga =String.valueOf(harga);
+                        price.setText(Tharga);
+                        break;
+                    case "Sidoarjo":
+                        harga = plh * 15000;
+                        Tharga =String.valueOf(harga);
+                        price.setText(Tharga);break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected (AdapterView < ? > adapterView){
+
+            }
+        });
+
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setVisibility(View.GONE);
         jemput = spinner1.getSelectedItem().toString();
-        spinner2.getSelectedItem().toString();
+       // jumlah1 = spinner2.getSelectedItem().toString();
         tujuan = spinner.getSelectedItem().toString().trim();
         tanggal = (TextView) findViewById(R.id.tampil);
 

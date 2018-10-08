@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -43,12 +44,15 @@ public class Shuttle_Activity extends AppCompatActivity {
     private String tujuan;
     private EditText jumlah;
     private TextView tanggal;
+    private TextView price;
     String show;
+    Integer harga = 0;
     FirebaseDatabase database;
     DatabaseReference ref;
     Order order;
     Intent intent;
     ProgressBar progressBar;
+    String Tharga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,8 @@ public class Shuttle_Activity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("pesanan");
 
+        price = (TextView) findViewById(R.id.harga);
+
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Order");
         order = new Order();
@@ -66,35 +72,70 @@ public class Shuttle_Activity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
 
         spinner = (Spinner) findViewById(R.id.spinner1);
-        String [] countries = { "Surabaya","Malang", "Sidoarjo"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries);
+        String[] countries = {"Surabaya", "Malang", "Sidoarjo"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries);
         spinner.setAdapter(adapter);
 
         spinner1 = (Spinner) findViewById(R.id.spinner2);
-        String [] countries1 = { "Surabaya","Malang", "Sidoarjo"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries1);
+        String[] countries1 = {"Surabaya", "Malang", "Sidoarjo"};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries1);
         spinner1.setAdapter(adapter1);
 
         spinner2 = (Spinner) findViewById(R.id.spinner3);
-        String [] countries2 = {"1", "2", "3", "4"};
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries2);
+        String[] countries2 = {"1", "2", "3", "4"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries2);
         spinner2.setAdapter(adapter2);
 
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String plhpesanan = spinner2.getSelectedItem().toString();
+                Integer plh = Integer.parseInt(plhpesanan);
+                String jmpt = spinner.getSelectedItem().toString();
+                switch (jmpt) {
+                    case "Malang":
+                        harga = plh * 10000;
+                        Tharga = String.valueOf(harga);
+                        price.setText(Tharga);
+                        break;
+                    case "Surabaya":
+                        harga = plh * 20000;
+                        Tharga = String.valueOf(harga);
+                        price.setText(Tharga);
+                        break;
+                    case "Sidoarjo":
+                        harga = plh * 15000;
+                        Tharga = String.valueOf(harga);
+                        price.setText(Tharga);
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        dateFormatter = new
+
+                SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
 
         jemput = spinner1.getSelectedItem().toString().trim();
         tujuan = spinner.getSelectedItem().toString().trim();
         spinner2.getSelectedItem().toString().trim();
-        tanggal = (TextView) findViewById(R.id.tampil);
-
+        tanggal = (TextView)findViewById(R.id.tampil);
         show = tanggal.getText().toString().trim();
+        btPesan = (Button)findViewById(R.id.pesan1);
+        btPesan.setOnClickListener(new View.OnClickListener()
 
-        btPesan = (Button) findViewById(R.id.pesan1);
-        btPesan.setOnClickListener(new View.OnClickListener() {
+        {
             @Override
             public void onClick(View view) {
-                final pesanan pesan=new pesanan( spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), spinner2.getSelectedItem().toString(),tanggal.getText().toString());
+                final pesanan pesan = new pesanan(spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), spinner2.getSelectedItem().toString(), tanggal.getText().toString());
                 progressBar.setVisibility(View.VISIBLE);
                 final String key = databaseReference.push().getKey();
                 databaseReference.child(key).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -111,32 +152,24 @@ public class Shuttle_Activity extends AppCompatActivity {
                 });
             }
         });
-        tvDateResult = (TextView) findViewById(R.id.tampil);
-        btDatePicker = (Button) findViewById(R.id.date);
-        btDatePicker.setOnClickListener(new View.OnClickListener() {
+        tvDateResult = (TextView)
+
+                findViewById(R.id.tampil);
+
+        btDatePicker = (Button)
+
+                findViewById(R.id.date);
+        btDatePicker.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
             public void onClick(View view) {
                 showDateDialog();
             }
         });
     }
-//    public void senddata(){
-//
-//            Intent intent = new Intent(Shuttle_Activity.this, TampilShuttle_Activity.class);
-//            intent.putExtra("JEMPUT_KOTA", jemput);
-//            intent.putExtra("TUJUAN_KOTA", tujuan);
-//            intent.putExtra("JUMLAH_PESANAN", jml);
-//            intent.putExtra("TANGAL_PESANAN", show);
-//            startActivity(intent);
-//    }
-    //private void getValues(){
 
-        //order.set(spinner.getPositionForView(spinner));
-        //order.set(spinner1.getPositionForView(spinner1));
-    //}
-
-
-    private void showDateDialog(){
+    private void showDateDialog() {
 
         Calendar newCalendar = Calendar.getInstance();
 
@@ -148,10 +181,10 @@ public class Shuttle_Activity extends AppCompatActivity {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
 
-                tvDateResult.setText(" "+dateFormatter.format(newDate.getTime()));
+                tvDateResult.setText(" " + dateFormatter.format(newDate.getTime()));
             }
 
-        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
         datePickerDialog.show();
     }

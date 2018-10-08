@@ -84,9 +84,9 @@ public class Profil_Activity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                         User user = dataSnapshot.getValue(User.class);
-                            email.setText(Objects.requireNonNull(user).getEmail());
-                            nomor.setText(user.getNomer());
-                            jk.setText(user.getJenis());
+                        email.setText(Objects.requireNonNull(user).getEmail());
+                        nomor.setText(user.getNomer());
+                        jk.setText(user.getJenis());
                     }
                 }
 

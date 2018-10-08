@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -67,8 +66,6 @@ public class TampilDrop_Activity extends AppCompatActivity {
 
         pesan2=(TextView) findViewById(R.id.pesan2);
 
-        //Shows("","","","");
-
         logout = (Button) findViewById(R.id.logout1);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,25 +76,8 @@ public class TampilDrop_Activity extends AppCompatActivity {
             }
         });
     }
-//   public void Shows( String jemput, String jumlah1, String tanggal1, String tujuan1) {
-//        String jemput_kota = getIntent().getStringExtra("JEMPUT_KOTA");
-//        jemput = String.valueOf(jemput_kota);
-//        mJemput.setText(jemput);
-//
-//        String tujuan = getIntent().getStringExtra("TUJUAN_KOTA");
-//        tujuan1 = String.valueOf(tujuan);
-//        mTujuan.setText(tujuan1);
-//
-//        String jumlah = getIntent().getStringExtra("JUMLAH_PESANAN");
-//        jumlah1 = String.valueOf(jumlah);
-//        mJumlah.setText(jumlah1);
-//
-//        String tanggal = getIntent().getStringExtra("TANGGAL_PESANAN");
-//        tanggal1 = String.valueOf(tanggal);
-//        mTanggal.setText(tanggal1);
-//    }
     public void pesan(View view) {
-        String formattedNumber = "6287859706611";
+        String formattedNumber = "6281336227548";
         try {
             Intent sendIntent = new Intent("android.intent.action.MAIN");
             sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
