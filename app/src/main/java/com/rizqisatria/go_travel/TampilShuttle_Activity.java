@@ -77,23 +77,11 @@ public class TampilShuttle_Activity extends AppCompatActivity {
                 Auth.signOut();
                 Intent intent2 = new Intent(TampilShuttle_Activity.this, GOTravel_Activity.class);
                 startActivity(intent2);
+                finish();
             }
         });
 
     }
-//    public void Shows(){
-//        String jemput_kota = (String) bundle.get("JEMPUT_KOTA");
-//        mJemput.setText(jemput_kota);
-//
-//        String tujuan = (String) bundle.get("TUJUAN_KOTA");
-//        mTujuan.setText(tujuan);
-//
-//        String jumlah = (String) bundle.get("JUMLAH_PESANAN");
-//        mJumlah.setText(jumlah);
-//
-//        String tanggal = (String) bundle.get("TANGGAL_PESANAN");
-//        mTanggal.setText(tanggal);
-//    }
 
     public void pesan(View view) {
         String formattedNumber = "6287859706611";
@@ -112,3 +100,18 @@ public class TampilShuttle_Activity extends AppCompatActivity {
         }
     }
 }
+
+
+//    public void Shows(){
+//        String jemput_kota = (String) bundle.get("JEMPUT_KOTA");
+//        mJemput.setText(jemput_kota);
+//
+//        String tujuan = (String) bundle.get("TUJUAN_KOTA");
+//        mTujuan.setText(tujuan);
+//
+//        String jumlah = (String) bundle.get("JUMLAH_PESANAN");
+//        mJumlah.setText(jumlah);
+//
+//        String tanggal = (String) bundle.get("TANGGAL_PESANAN");
+//        mTanggal.setText(tanggal);
+//    }

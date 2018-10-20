@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rp"
-            android:layout_marginLeft="110dp"
+            android:layout_marginLeft="125dp"
             android:textStyle="bold"
             android:textColor="#DC143C"
             android:textSize="20sp"/>
@@ -139,7 +139,7 @@
             android:text=""
             android:textStyle="bold"
             android:textColor="#DC143C"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="50dp"
             android:textSize="20sp"/>
     </LinearLayout>
 

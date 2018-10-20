@@ -66,7 +66,7 @@ public class Drop_Activity extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,countries2);
         spinner2.setAdapter(adapter2);
 
-        price = (TextView) findViewById(R.id.prices);
+        price = (TextView) findViewById(R.id.harga);
 
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -102,7 +102,7 @@ public class Drop_Activity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setVisibility(View.GONE);
         jemput = spinner1.getSelectedItem().toString();
-       // jumlah1 = spinner2.getSelectedItem().toString();
+        spinner2.getSelectedItem().toString();
         tujuan = spinner.getSelectedItem().toString().trim();
         tanggal = (TextView) findViewById(R.id.tampil);
 
@@ -133,7 +133,6 @@ public class Drop_Activity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             progressBar.setVisibility(View.GONE);
                             Intent intent = new Intent(Drop_Activity.this, TampilDrop_Activity.class);
-                            //intent.putExtra("jml", spinner1.getSelectedItem().toString());
                             intent.putExtra(extra, key);
                             startActivity(intent);
 

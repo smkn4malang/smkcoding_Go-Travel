@@ -32,7 +32,8 @@
         <activity android:name=".EditProfil_Activity" />
         <activity android:name=".TampilShuttle_Activity" />
         <activity android:name=".TampilCarter_Activity" />
-        <activity android:name=".Cari_Activity"></activity>
+        <activity android:name=".Cari_Activity" />
+        <activity android:name=".LupaPass_Activity"></activity>
     </application>
 
 </manifest>

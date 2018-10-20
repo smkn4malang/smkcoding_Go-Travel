@@ -56,9 +56,11 @@ public class Profil_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Profil_Activity.this, EditProfil_Activity.class);
+                intent.putExtra("JK", jk.getText().toString());
                 startActivity(intent);
             }
         });
+
         balik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,17 +68,17 @@ public class Profil_Activity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+
         logoutProfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 auth.signOut();
-                Intent intent2 = new Intent(Profil_Activity.this, GOTravel_Activity.class);
-                startActivity(intent2);
-
+                startActivity(new Intent(Profil_Activity.this, GOTravel_Activity.class));
+                finish();
             }
         });
 
-        }
+    }
 
         private void userInput(){
             databaseReference.child(Objects.requireNonNull(auth.getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {

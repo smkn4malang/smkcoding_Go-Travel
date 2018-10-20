@@ -90,6 +90,7 @@ public class GOTravel_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent (GOTravel_Activity.this, Daftar_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

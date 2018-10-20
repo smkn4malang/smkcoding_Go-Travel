@@ -35,7 +35,7 @@ public class Daftar_Activity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference ref;
     private RadioGroup jenis;
-    private String result;
+    private String JK;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,12 +93,12 @@ public class Daftar_Activity extends AppCompatActivity {
                                             User u =new User(
                                                     Inptemail.getText().toString(),
                                                     nomer.getText().toString(),
-                                                    result
+                                                    JK
                                             );
                                             ref.child(Objects.requireNonNull(auth.getCurrentUser()).getUid()).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
-
+                                                    auth.signOut();
                                                     startActivity(new Intent(Daftar_Activity.this, GOTravel_Activity.class));
                                                     finish();
                                                 }
@@ -125,13 +125,10 @@ public class Daftar_Activity extends AppCompatActivity {
 
     public void RadioButton(){
 
-        int Id = jenis.getCheckedRadioButtonId();
+        int RadioButtonID = jenis.getCheckedRadioButtonId();
 
-        if(Id != -1){
-            RadioButton selected = (RadioButton) findViewById(R.id.pria);
-            result = selected.getText().toString();
-        }else{
-            RadioButton selected = (RadioButton) findViewById(R.id.wanita);
-        }
+            RadioButton selected = (RadioButton) findViewById(RadioButtonID);
+            JK = selected.getText().toString();
+
     }
 }

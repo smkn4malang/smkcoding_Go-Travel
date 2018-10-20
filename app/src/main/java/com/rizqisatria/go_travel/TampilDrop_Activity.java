@@ -73,6 +73,7 @@ public class TampilDrop_Activity extends AppCompatActivity {
                 auth.signOut();
                 Intent intent2 = new Intent(TampilDrop_Activity.this, GOTravel_Activity.class);
                 startActivity(intent2);
+                finish();
             }
         });
     }
