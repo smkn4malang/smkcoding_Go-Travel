@@ -71,7 +71,7 @@ public class Daftar_Activity extends AppCompatActivity {
                     return;
                 }
 
-                if (password.length() < 11) {
+                if (password.length() < 6) {
                     Toast.makeText(getApplicationContext(), "Nomer Anda Kurang, Minim 11 angka", Toast.LENGTH_SHORT).show();
                     return;
                 }

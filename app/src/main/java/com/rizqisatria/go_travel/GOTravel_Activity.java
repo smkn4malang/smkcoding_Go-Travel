@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class GOTravel_Activity extends AppCompatActivity {
-    Button btnlogin;
+    Button btnlogin, btndaftar;
     TextView txtview;
     EditText nama , nomor;
     ProgressBar progressBar;
@@ -44,6 +44,7 @@ public class GOTravel_Activity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnlogin = (Button) findViewById(R.id.button);
         auth = FirebaseAuth.getInstance();
+        btndaftar = (Button) findViewById(R.id.button2);
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,10 +83,9 @@ public class GOTravel_Activity extends AppCompatActivity {
                         }
                     }
                 });
-
             }
         });
-        text.setOnClickListener(new View.OnClickListener() {
+        btndaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent (GOTravel_Activity.this, Daftar_Activity.class);
@@ -93,5 +93,22 @@ public class GOTravel_Activity extends AppCompatActivity {
                 finish();
             }
         });
+
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (GOTravel_Activity.this, LupaPass_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
