@@ -34,6 +34,7 @@ public class TampilDrop_Activity extends AppCompatActivity {
     private TextView mTujuan;
     private TextView mJumlah;
     private TextView mTanggal;
+    private TextView mPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class TampilDrop_Activity extends AppCompatActivity {
         mJumlah = (TextView) findViewById(R.id.jumlah);
         mTujuan = (TextView) findViewById(R.id.tujuan);
         mTanggal = (TextView) findViewById(R.id.tanggal);
+        mPrice = (TextView) findViewById(R.id.total);
         auth = FirebaseAuth.getInstance();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -56,6 +58,7 @@ public class TampilDrop_Activity extends AppCompatActivity {
                     mTujuan.setText(psn.getTujuan());
                     mJumlah.setText(psn.getJumlah());
                     mTanggal.setText(psn.getTanggal());
+                    mPrice.setText(psn.getPrice());
             }
 
             @Override

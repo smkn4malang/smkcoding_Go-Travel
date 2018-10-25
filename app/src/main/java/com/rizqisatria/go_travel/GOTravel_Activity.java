@@ -57,7 +57,7 @@ public class GOTravel_Activity extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(nomer)){
-                    Toast.makeText(getApplicationContext(), "Masukkan Nomor !",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Masukkan Password !",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -70,8 +70,8 @@ public class GOTravel_Activity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task){
                         progressBar.setVisibility(View.GONE);
                         if (!task.isSuccessful()){
-                            if(nomer.length() < 11) {
-                                Toast.makeText(getApplicationContext(), "Nomer Anda Kurang!", Toast.LENGTH_SHORT).show();
+                            if(nomer.length() < 6) {
+                                Toast.makeText(getApplicationContext(), "Password Anda Kurang!", Toast.LENGTH_SHORT).show();
                             }
                             else{
                                 Toast.makeText(getApplicationContext(), "Gagal Login!", Toast.LENGTH_SHORT).show();
@@ -106,9 +106,9 @@ public class GOTravel_Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent();
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+          Intent i = new Intent(Intent.ACTION_MAIN);
+          i.addCategory(Intent.CATEGORY_HOME);
+          i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+          startActivity(i);
     }
 }

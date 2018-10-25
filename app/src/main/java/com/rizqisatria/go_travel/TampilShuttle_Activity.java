@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -33,6 +35,7 @@ public class TampilShuttle_Activity extends AppCompatActivity {
     private TextView mTujuan;
     private TextView mJumlah;
     private TextView mTanggal;
+    private TextView mPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,7 @@ public class TampilShuttle_Activity extends AppCompatActivity {
         mJumlah = (TextView) findViewById(R.id.jumlah);
         mTujuan = (TextView) findViewById(R.id.tujuan);
         mTanggal = (TextView) findViewById(R.id.tanggal);
+        mPrice = (TextView) findViewById(R.id.total);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("pesanan");
@@ -55,10 +59,11 @@ public class TampilShuttle_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 pesanan psn = dataSnapshot.getValue(pesanan.class);
-                mJemput.setText(psn.getJemput());
+                mJemput.setText(Objects.requireNonNull(psn).getJemput());
                 mTujuan.setText(psn.getTujuan());
                 mJumlah.setText(psn.getJumlah());
                 mTanggal.setText(psn.getTanggal());
+                mPrice.setText(psn.getPrice());
             }
 
             @Override

@@ -72,12 +72,12 @@ public class Shuttle_Activity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
 
         spinner = (Spinner) findViewById(R.id.spinner1);
-        String[] countries = {"Surabaya", "Malang", "Sidoarjo"};
+        String[] countries = {"Tabanan", "Kuta", "Denpasar"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries);
         spinner.setAdapter(adapter);
 
         spinner1 = (Spinner) findViewById(R.id.spinner2);
-        String[] countries1 = {"Surabaya", "Malang", "Sidoarjo"};
+        String[] countries1 = {"Denpasar", "Kuta", "Tabanan"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries1);
         spinner1.setAdapter(adapter1);
 
@@ -94,18 +94,18 @@ public class Shuttle_Activity extends AppCompatActivity {
                 Integer plh = Integer.parseInt(plhpesanan);
                 String jmpt = spinner.getSelectedItem().toString();
                 switch (jmpt) {
-                    case "Malang":
-                        harga = plh * 10000;
-                        Tharga = String.valueOf(harga);
-                        price.setText(Tharga);
-                        break;
-                    case "Surabaya":
-                        harga = plh * 20000;
-                        Tharga = String.valueOf(harga);
-                        price.setText(Tharga);
-                        break;
-                    case "Sidoarjo":
+                    case "Tabanan":
                         harga = plh * 15000;
+                        Tharga = String.valueOf(harga);
+                        price.setText(Tharga);
+                        break;
+                    case "Kuta":
+                        harga = plh * 50000;
+                        Tharga = String.valueOf(harga);
+                        price.setText(Tharga);
+                        break;
+                    case "Denpasar":
+                        harga = plh * 35000;
                         Tharga = String.valueOf(harga);
                         price.setText(Tharga);
                         break;
@@ -123,7 +123,6 @@ public class Shuttle_Activity extends AppCompatActivity {
 
                 SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
-
         jemput = spinner1.getSelectedItem().toString().trim();
         tujuan = spinner.getSelectedItem().toString().trim();
         spinner2.getSelectedItem().toString().trim();
@@ -135,7 +134,7 @@ public class Shuttle_Activity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                final pesanan pesan = new pesanan(spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), spinner2.getSelectedItem().toString(), tanggal.getText().toString());
+                final pesanan pesan = new pesanan(spinner1.getSelectedItem().toString(), spinner.getSelectedItem().toString(), spinner2.getSelectedItem().toString(), tanggal.getText().toString(),price.getText().toString());
                 progressBar.setVisibility(View.VISIBLE);
                 final String key = databaseReference.push().getKey();
                 databaseReference.child(key).setValue(pesan).addOnCompleteListener(new OnCompleteListener<Void>() {
