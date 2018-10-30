@@ -32,6 +32,7 @@ public class EditProfil_Activity extends AppCompatActivity {
     Button btsave;
     RadioButton pria,wanita;
     RadioGroup jenis;
+    String saldo;
     private EditText nomor, email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,19 @@ public class EditProfil_Activity extends AppCompatActivity {
     }
 
     private void update(){
+        ref.child(Objects.requireNonNull(Auth.getCurrentUser()).getUid()).child("saldo").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                saldo = dataSnapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
         RadioButton();
         if (JK == null){
             Toast.makeText(getApplicationContext(), "Jenis Kelamin Kosong",Toast.LENGTH_SHORT).show();
@@ -90,7 +104,8 @@ public class EditProfil_Activity extends AppCompatActivity {
         User user = new User(
                 email.getText().toString(),
                 nomor.getText().toString(),
-                JK
+                JK,
+                saldo
         );
         ref.child(Objects.requireNonNull(Auth.getCurrentUser()).getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

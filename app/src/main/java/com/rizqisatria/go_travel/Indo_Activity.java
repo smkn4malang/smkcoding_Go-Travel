@@ -18,7 +18,7 @@ public class Indo_Activity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Indo_Activity.this, Profil_Activity.class);
+                Intent intent = new Intent(Indo_Activity.this, TopUp_Activity.class);
                 startActivity(intent);
             }
         });

@@ -35,7 +35,8 @@
         <activity android:name=".Cari_Activity" />
         <activity android:name=".LupaPass_Activity" />
         <activity android:name=".TopUp_Activity" />
-        <activity android:name=".TopUpDriver_Activity"></activity>
+        <activity android:name=".TopUpDriver_Activity" />
+        <activity android:name=".Bukti_Activity"></activity>
     </application>
 
 </manifest>

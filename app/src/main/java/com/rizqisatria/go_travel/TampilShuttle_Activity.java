@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,15 +29,16 @@ import butterknife.OnClick;
 public class TampilShuttle_Activity extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,ref;
     Button logout;
-    TextView pesan3;
+    String Saldo;
+    TextView pesan3,saldoView;
     private FirebaseAuth Auth;
     private TextView mJemput;
     private TextView mTujuan;
     private TextView mJumlah;
     private TextView mTanggal;
-    private TextView mPrice;
+    private TextView mPrice,SaldoAkhr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +48,16 @@ public class TampilShuttle_Activity extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("pesanan");
+        ref = firebaseDatabase.getReference("User");
 
         mJemput = (TextView) findViewById(R.id.jemput);
         mJumlah = (TextView) findViewById(R.id.jumlah);
         mTujuan = (TextView) findViewById(R.id.tujuan);
         mTanggal = (TextView) findViewById(R.id.tanggal);
         mPrice = (TextView) findViewById(R.id.total);
+        saldoView = (TextView)findViewById(R.id.Saldo);
+        SaldoAkhr =(TextView)findViewById(R.id.SaldoAkhir);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("pesanan");
         String key = getIntent().getStringExtra(Drop_Activity.extra);
         databaseReference.child(key).addValueEventListener(new ValueEventListener() {
             @Override
@@ -72,6 +76,8 @@ public class TampilShuttle_Activity extends AppCompatActivity {
             }
         });
 
+        prosesbayar();
+
        pesan3 = (TextView) findViewById(R.id.pesan3) ;
 
 
@@ -85,6 +91,48 @@ public class TampilShuttle_Activity extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+
+    private void prosesbayar(){
+        ref.child(Objects.requireNonNull(Auth.getCurrentUser()).getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+                    User user = dataSnapshot.getValue(User.class);
+                    Saldo = Objects.requireNonNull(user).getSaldo();
+                    saldoView.setText(Saldo);
+
+
+                    String bayar = mPrice.getText().toString();
+                    Integer SaldoC= Integer.parseInt(Saldo);
+                    Integer Pay = Integer.parseInt(bayar);
+
+                    if(SaldoC <= Pay){
+                        Toast.makeText(getApplicationContext(),"Saldo anda Tidak cukup",Toast.LENGTH_SHORT).show();
+                    }else{
+                        final Integer SaldoAkhir = SaldoC - Pay;
+                        final String Finalsaldo = String.valueOf(SaldoAkhir);
+                        SaldoAkhr.setText(Finalsaldo);
+
+                        ref.child(Objects.requireNonNull(Auth.getCurrentUser()).getUid()).child("saldo").setValue(Finalsaldo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(getApplicationContext(),"Transaksi Berhasil"+Finalsaldo,Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 
@@ -106,17 +154,3 @@ public class TampilShuttle_Activity extends AppCompatActivity {
     }
 }
 
-
-//    public void Shows(){
-//        String jemput_kota = (String) bundle.get("JEMPUT_KOTA");
-//        mJemput.setText(jemput_kota);
-//
-//        String tujuan = (String) bundle.get("TUJUAN_KOTA");
-//        mTujuan.setText(tujuan);
-//
-//        String jumlah = (String) bundle.get("JUMLAH_PESANAN");
-//        mJumlah.setText(jumlah);
-//
-//        String tanggal = (String) bundle.get("TANGGAL_PESANAN");
-//        mTanggal.setText(tanggal);
-//    }

@@ -136,11 +136,11 @@
             android:id="@+id/harga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textStyle="bold"
-            android:textColor="#DC143C"
             android:layout_marginLeft="50dp"
-            android:textSize="20sp"/>
+            android:text=""
+            android:textColor="#DC143C"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <Button

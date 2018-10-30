@@ -29,7 +29,7 @@ public class Profil_Activity extends AppCompatActivity {
     ImageView balik;
     Button logoutProfil;
     FirebaseAuth auth;
-    private TextView email, nomor, jk;
+    private TextView email, nomor, jk, saldo;
 
 
     @Override
@@ -40,6 +40,7 @@ public class Profil_Activity extends AppCompatActivity {
         edit = (ImageView) findViewById(R.id.edit);
         balik = (ImageView) findViewById(R.id.balik);
         logoutProfil = (Button) findViewById(R.id.logoutprofil);
+        saldo = (TextView) findViewById(R.id.saldo);
 
         email=(TextView) findViewById(R.id.email);
         nomor = (TextView) findViewById(R.id.nomer);
@@ -80,6 +81,7 @@ public class Profil_Activity extends AppCompatActivity {
 
     }
 
+
         private void userInput(){
             databaseReference.child(Objects.requireNonNull(auth.getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -89,6 +91,7 @@ public class Profil_Activity extends AppCompatActivity {
                         email.setText(Objects.requireNonNull(user).getEmail());
                         nomor.setText(user.getNomer());
                         jk.setText(user.getJenis());
+                        saldo.setText(user.getSaldo());
                     }
                 }
 
@@ -98,6 +101,7 @@ public class Profil_Activity extends AppCompatActivity {
                 }
             });
         }
+
 
     }
 

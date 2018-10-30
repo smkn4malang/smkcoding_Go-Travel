@@ -154,7 +154,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="LIHAT"
+        android:text="TRANSAKSI"
         android:textColor="#fff"
         android:background="@drawable/kotak"
         />

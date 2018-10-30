@@ -108,6 +108,24 @@
                         android:gravity="center"
                         android:textSize="20sp"
                         android:textColor="#000"/>
+                    <TextView
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/Saldo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Saldo"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/SaldoAkhir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Saldo"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:textColor="#000"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -144,6 +162,7 @@
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:text="Logout"
+        android:textColor="#4682B4"
         android:layout_gravity="center"
         android:background="@drawable/border"/>
 </LinearLayout>

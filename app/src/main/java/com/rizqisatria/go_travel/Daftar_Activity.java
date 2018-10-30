@@ -93,7 +93,8 @@ public class Daftar_Activity extends AppCompatActivity {
                                             User u =new User(
                                                     Inptemail.getText().toString(),
                                                     nomer.getText().toString(),
-                                                    JK
+                                                    JK,
+                                                    "0"
                                             );
                                             ref.child(Objects.requireNonNull(auth.getCurrentUser()).getUid()).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override

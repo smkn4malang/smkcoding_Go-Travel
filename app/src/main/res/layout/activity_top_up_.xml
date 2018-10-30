@@ -75,14 +75,14 @@
                     android:textColor="#285296"
                     android:textSize="20dp"/>
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/uang"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="5000"
                     android:layout_marginLeft="5dp"
                     android:backgroundTint="#4682B4"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:textColor="#000"
                     android:textColorHint="#285296"
                     android:textSize="22sp" />

@@ -18,7 +18,7 @@ public class Driver_Activity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Driver_Activity.this, Profil_Activity.class);
+                Intent intent = new Intent(Driver_Activity.this, TopUpDriver_Activity.class);
                 startActivity(intent);
             }
         });

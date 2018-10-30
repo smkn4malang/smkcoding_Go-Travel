@@ -1,15 +1,22 @@
 package com.rizqisatria.go_travel;
 
 public class User {
-    private String email,nomer,jenis;
-
-
+    private String email,nomer,jenis,saldo;
     public User(){}
 
-    public User(String email, String nomer, String jenis) {
+    public User(String email, String nomer, String jenis, String saldo) {
         this.email = email;
         this.nomer = nomer;
         this.jenis = jenis;
+        this.saldo = saldo;
+    }
+
+    public String getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(String saldo) {
+        this.saldo = saldo;
     }
 
     public String getEmail() {

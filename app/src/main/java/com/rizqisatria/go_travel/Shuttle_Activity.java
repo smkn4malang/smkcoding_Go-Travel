@@ -14,9 +14,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +33,8 @@ import java.util.Objects;
 public class Shuttle_Activity extends AppCompatActivity {
     public static final String extra = "extra";
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,ref;
+    FirebaseAuth Auth;
     Spinner spinner2;
     Spinner spinner;
     Spinner spinner1;
@@ -40,15 +43,14 @@ public class Shuttle_Activity extends AppCompatActivity {
     private TextView tvDateResult, getspinner;
     private Button btDatePicker;
     private Button btPesan;
-    private String jemput;
+    private String jemput,Saldo;
     private String tujuan;
     private EditText jumlah;
     private TextView tanggal;
-    private TextView price;
+    private TextView price,vharga;
     String show;
     Integer harga = 0;
     FirebaseDatabase database;
-    DatabaseReference ref;
     Order order;
     Intent intent;
     ProgressBar progressBar;
@@ -61,12 +63,16 @@ public class Shuttle_Activity extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("pesanan");
+        ref = firebaseDatabase.getReference("user");
+        Auth =FirebaseAuth.getInstance();
 
         price = (TextView) findViewById(R.id.harga);
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Order");
         order = new Order();
+
+        vharga = (TextView)findViewById(R.id.harga);
 
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setVisibility(View.GONE);
@@ -143,12 +149,12 @@ public class Shuttle_Activity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             progressBar.setVisibility(View.GONE);
                             Intent intent = new Intent(Shuttle_Activity.this, TampilShuttle_Activity.class);
-                            //intent.putExtra("jml", spinner1.getSelectedItem().toString());
                             intent.putExtra(extra, key);
                             startActivity(intent);
                         }
                     }
                 });
+
             }
         });
         tvDateResult = (TextView)
