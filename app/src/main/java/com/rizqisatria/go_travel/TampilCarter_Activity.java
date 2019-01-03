@@ -48,7 +48,7 @@ public class TampilCarter_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                         auth.signOut();
-                        Intent intent2 = new Intent(TampilCarter_Activity.this, GOTravel_Activity.class);
+                        Intent intent2 = new Intent(TampilCarter_Activity.this, Fitur_Activity.class);
                         startActivity(intent2);
                         finish();
                     }

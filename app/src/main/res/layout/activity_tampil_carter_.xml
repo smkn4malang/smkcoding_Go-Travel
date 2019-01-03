@@ -95,7 +95,7 @@
             android:layout_width="150dp"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:text="Logout"
+            android:text="BACK"
             android:textColor="#4682B4"
             android:layout_gravity="center"
             android:background="@drawable/border"/>

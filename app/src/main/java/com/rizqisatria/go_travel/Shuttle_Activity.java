@@ -125,9 +125,7 @@ public class Shuttle_Activity extends AppCompatActivity {
             }
         });
 
-        dateFormatter = new
-
-                SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
         jemput = spinner1.getSelectedItem().toString().trim();
         tujuan = spinner.getSelectedItem().toString().trim();

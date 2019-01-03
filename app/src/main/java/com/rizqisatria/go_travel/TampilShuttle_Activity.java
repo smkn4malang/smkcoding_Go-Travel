@@ -31,7 +31,7 @@ public class TampilShuttle_Activity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference,ref;
     Button logout;
-    String Saldo;
+    private String Saldo,price;
     TextView pesan3,saldoView;
     private FirebaseAuth Auth;
     private TextView mJemput;
@@ -58,7 +58,25 @@ public class TampilShuttle_Activity extends AppCompatActivity {
         saldoView = (TextView)findViewById(R.id.Saldo);
         SaldoAkhr =(TextView)findViewById(R.id.SaldoAkhir);
 
-        String key = getIntent().getStringExtra(Drop_Activity.extra);
+        getPesanan();
+        prosesbayar();
+
+        pesan3 = (TextView) findViewById(R.id.pesan3) ;
+
+        logout = (Button) findViewById(R.id.logout2);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(TampilShuttle_Activity.this, Fitur_Activity.class);
+                startActivity(intent2);
+                finish();
+            }
+        });
+
+    }
+
+    private void getPesanan(){
+        String key = getIntent().getStringExtra(Shuttle_Activity.extra);
         databaseReference.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -68,6 +86,8 @@ public class TampilShuttle_Activity extends AppCompatActivity {
                 mJumlah.setText(psn.getJumlah());
                 mTanggal.setText(psn.getTanggal());
                 mPrice.setText(psn.getPrice());
+                price=psn.getPrice();
+
             }
 
             @Override
@@ -75,23 +95,7 @@ public class TampilShuttle_Activity extends AppCompatActivity {
 
             }
         });
-
-        prosesbayar();
-
-       pesan3 = (TextView) findViewById(R.id.pesan3) ;
-
-
-        logout = (Button) findViewById(R.id.logout2);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Auth.signOut();
-                Intent intent2 = new Intent(TampilShuttle_Activity.this, GOTravel_Activity.class);
-                startActivity(intent2);
-                finish();
-            }
-        });
-
+        Toast.makeText(getApplicationContext(),"Price "+mPrice.getText().toString(),Toast.LENGTH_SHORT).show();
     }
 
     private void prosesbayar(){
@@ -104,9 +108,9 @@ public class TampilShuttle_Activity extends AppCompatActivity {
                     saldoView.setText(Saldo);
 
 
-                    String bayar = mPrice.getText().toString();
+//                    String bayar = mPrice.getText().toString();
                     Integer SaldoC= Integer.parseInt(Saldo);
-                    Integer Pay = Integer.parseInt(bayar);
+                    Integer Pay = Integer.parseInt(mPrice.getText().toString());
 
                     if(SaldoC <= Pay){
                         Toast.makeText(getApplicationContext(),"Saldo anda Tidak cukup",Toast.LENGTH_SHORT).show();

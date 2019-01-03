@@ -88,6 +88,7 @@ public class EditProfil_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 saldo = dataSnapshot.getValue(String.class);
+                Toast.makeText(getApplicationContext(),"Saldo "+saldo,Toast.LENGTH_SHORT).show();
             }
 
             @Override

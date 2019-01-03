@@ -62,74 +62,171 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_marginTop="20dp"
-                        android:id="@+id/jemput"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tujuan :"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:textColor="#000"/>
-                    <TextView
-                        android:layout_marginTop="30dp"
-                        android:id="@+id/tujuan"
-                        android:textSize="20sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Jemput :"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textColor="#000"/>
-                    <TextView
-                        android:layout_marginTop="30dp"
-                        android:id="@+id/jumlah"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Jumlah :"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:textColor="#000"/>
-                    <TextView
-                        android:layout_marginTop="30dp"
-                        android:id="@+id/tanggal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tanggal :"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:textColor="#000"/>
-                    <TextView
-                        android:layout_marginTop="30dp"
-                        android:id="@+id/total"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Total"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:textColor="#000"/>
-                    <TextView
-                        android:layout_marginTop="30dp"
-                        android:id="@+id/Saldo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Saldo Awal"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:textColor="#000"/>
-                    <TextView
-                        android:layout_marginTop="30dp"
-                        android:id="@+id/SaldoAkhir"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Saldo Akhir"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:textColor="#000"/>
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tujuan :"
+                            android:layout_marginLeft="80dp"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+                        <TextView
+                            android:id="@+id/tujuan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Denpasar"
+                            android:layout_marginLeft="50dp"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
 
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Jemput :"
+                            android:layout_marginLeft="80dp"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+
+                        <TextView
+                            android:id="@+id/jemput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Denpasar"
+                            android:layout_marginLeft="60dp"
+                            android:gravity="center"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah :"
+                            android:layout_marginLeft="80dp"
+                            android:gravity="center"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+                        <TextView
+                            android:id="@+id/jumlah"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4"
+                            android:layout_marginLeft="90dp"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tanggal :"
+                            android:layout_marginLeft="80dp"
+                            android:gravity="center"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+
+                        <TextView
+                            android:id="@+id/tanggal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="28-09-2001"
+                            android:layout_marginLeft="50dp"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total :"
+                            android:layout_marginLeft="80dp"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+                        <TextView
+                            android:id="@+id/total"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rp.100000"
+                            android:layout_marginLeft="82dp"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Saldo Awal :"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="80dp"
+                            android:textColor="#000"/>
+                        <TextView
+                            android:id="@+id/Saldo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp 100000"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Saldo Akhir :"
+                            android:layout_marginLeft="80dp"
+                            android:gravity="center"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+
+                        <TextView
+                            android:id="@+id/SaldoAkhir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:layout_marginLeft="30dp"
+                            android:textSize="20sp"
+                            android:textColor="#000"/>
+
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -164,7 +261,7 @@
         android:layout_width="150dp"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
-        android:text="Logout"
+        android:text="Back"
         android:textColor="#4682B4"
         android:layout_gravity="center"
         android:background="@drawable/border"/>

@@ -31,15 +31,12 @@ public class TampilDrop_Activity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference,ref;
     Button logout;
-    String Saldo;
+    String Saldo,Finalsaldo;
+    Integer SaldoAkhir;
     TextView pesan2;
     FirebaseAuth Auth;
-    private TextView mJemput;
-    private TextView mTujuan;
-    private TextView mJumlah;
-    private TextView mTanggal;
-    private TextView mPrice;
-    private TextView SaldoView,SaldoAkhirView;
+    private TextView mJemput,mTujuan,mJumlah,mTanggal,mPrice,SaldoView,SaldoAkhirView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +60,7 @@ public class TampilDrop_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     pesanan psn = dataSnapshot.getValue(pesanan.class);
-                    mJemput.setText(psn.getJemput());
+                    mJemput.setText(Objects.requireNonNull(psn).getJemput());
                     mTujuan.setText(psn.getTujuan());
                     mJumlah.setText(psn.getJumlah());
                     mTanggal.setText(psn.getTanggal());
@@ -82,8 +79,7 @@ public class TampilDrop_Activity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Auth.signOut();
-                Intent intent2 = new Intent(TampilDrop_Activity.this, GOTravel_Activity.class);
+                Intent intent2 = new Intent(TampilDrop_Activity.this, Fitur_Activity.class);
                 startActivity(intent2);
                 finish();
             }
@@ -107,14 +103,14 @@ public class TampilDrop_Activity extends AppCompatActivity {
                     if(SaldoC <= Pay){
                         Toast.makeText(getApplicationContext(),"Saldo anda Tidak cukup",Toast.LENGTH_SHORT).show();
                     }else{
-                        final Integer SaldoAkhir = SaldoC - Pay;
-                        final String Finalsaldo = String.valueOf(SaldoAkhir);
+                        SaldoAkhir = SaldoC - Pay;
+                        Finalsaldo = String.valueOf(SaldoAkhir);
                         SaldoAkhirView.setText(Finalsaldo);
 
                         ref.child(Objects.requireNonNull(Auth.getCurrentUser()).getUid()).child("saldo").setValue(Finalsaldo).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(getApplicationContext(),"Transaksi Berhasil"+Finalsaldo,Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"Transaksi Berhasil "+ Finalsaldo,Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

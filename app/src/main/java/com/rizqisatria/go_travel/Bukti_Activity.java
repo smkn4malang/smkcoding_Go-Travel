@@ -30,7 +30,7 @@ public class Bukti_Activity extends AppCompatActivity {
     private Button simpan;
     private String SaldoAdded;
     private Integer temp,tempPpn, SaldoOri, Total;
-    private DatabaseReference           ref;
+    private DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
